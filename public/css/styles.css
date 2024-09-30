@@ -1,0 +1,302 @@
+/******* Change Box Model ***************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/images/site/checkerboard.jpg") no-repeat center fixed;
+  background-size: cover;
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-weight: 200; /* normal */
+  font-weight: 600; /* bold */
+  width: 900px;
+  background: white;
+  background-size: cover; /* Ensures the image covers the entire area */
+  padding: 20px;
+  border: 5px solid #307411; /* Adds a black border with 5px thickness */
+  border-radius: 10px; /* Optional: Adds rounded corners to the border */
+}
+  
+/* Style for the header */
+#top-header {
+  background-color: #bdc92050; /* Dark background for the header */
+  color: black; /* White text color */
+  padding: 20px; /* Space around the content inside the header */
+  display: flex; /* Flexbox for layout */
+  justify-content: space-between; /* Space between the site name and tools */
+  align-items: center; /* Vertically center the items */
+}
+
+/* Style for the site name */
+#top-header .siteName a {
+  font-size: 28px; /* Larger font size for the site name */
+  text-decoration: none; /* Remove underline */
+  color: green; /* White color for the link */
+  font-weight: bold;
+}
+
+#top-header .siteName a:hover {
+  color: #ca8a00; /* Change the color on hover */
+}
+
+
+/* Style for the tools section */
+#top-header #tools a {
+  font-size: 16px; /* Slightly smaller font size */
+  color: green; /* White color for the link */
+  text-decoration: none; /* Remove underline */
+}
+
+#top-header #tools a:hover {
+  color: #ca8a00;
+}
+
+/* Style for the navigation bar */
+nav {
+  background-color: #126432; /* Dark background color */ 
+}
+
+/* Style for the unordered list in the nav */
+nav ul {
+  list-style-type: none; /* Remove bullet points */
+  display: flex; /* Aligns the list items horizontally */
+  justify-content: space-around; /* Centers the list items */
+}
+
+/* Style for the individual list items */
+nav ul li {
+  color: white; /* White text color */
+  font-size: 20px; /* Set font size */
+  padding: 10px; /* Adds padding around the list items */
+  cursor: pointer; /* Changes the cursor to pointer on hover */
+  transition: background-color 0.2s ease; /* Smooth background color transition */
+}
+
+/* Hover effect on list items */
+nav ul li:hover {
+  background-color: #9fa81c; /* Lighter background on hover */
+  border-radius: 5px; /* Rounded corners on hover */
+}
+
+/* General */
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.text-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.hero-container img {
+  max-width: 100%; /* Ensure the image scales to fit the container */
+  height: auto; /* Maintain image aspect ratio */
+}
+
+.hero-container {
+  text-align: center; /* Center the text and image */
+}
+
+/* Style for the entire container */
+.container2 {
+  background-color: whitesmoke;
+  display: grid; /* Flexbox to arrange side by side */
+  grid-template-columns: repeat(2, 1fr); /* Example: 2 columns layout */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  justify-content: space-between; /* Space between items */
+  gap: 20px; /* Adds spacing between the two sections */
+}
+
+.container2 h2 {
+  text-decoration: underline;
+  background-color: #126432;
+  padding: 10px;
+  color: white;
+  font-size: 22px;
+}
+
+.container-img {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-content: space-between; /* Center the content horizontally */
+}
+
+/* Style for the image container */
+.image-container {
+  width: 100%;  /* Or any fixed width (e.g., 300px) */
+  height: 80px; /* Set a fixed height for the container */
+  overflow: hidden; /* Ensures the image doesn't overflow */
+  background-color: #48b416; 
+  padding: 10px; /* Padding inside the container */
+  text-align: center; /* Center the text and image */
+  border: 2px solid #10cc0a;
+  border-radius: 8px;
+}
+
+.image-container img {
+  width: 100%; /* Ensure the image scales to fit the container */
+  height: auto;
+  object-fit: cover; /* Makes the image fill the container while maintaining aspect ratio */
+}
+
+
+.image-item img {
+  max-width: 50px; /* Reduce image size on small screens */
+}
+
+.image-item p {
+  text-align: center;
+  margin-top: 0px;
+  font-size: 18px;
+}
+
+/* Make the container relative to position its children */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Set a max width for the container */
+  margin: 0 auto; /* Center the container */
+}
+
+/* Style for the hero image */
+.hero-container img {
+  width: 100%; /* Make the image take the full width of the container */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+/* Style for the content that goes on top of the image */
+.container-a {
+  position: absolute; /* Overlay on top of the image */
+  top: 0px; /* Adjust the vertical position */
+  left: 20px; /* Adjust the horizontal position */
+  background-color: rgba(192, 192, 192, 0.267); /* Add a semi-transparent background */
+  padding: 0 10px; /* Add padding inside the container */
+  color: green; /* White text color for contrast */
+  border-radius: 10px;
+  max-width: 300px; /* Optional: Limit the width of the content */
+}
+
+.container-a h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.container-a h3 {
+  margin: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container-a button {
+  background-color: #126432; /* Button background color */
+  color: white; /* Button text color */
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.container-a button:hover {
+  background-color: #9fa81c; /* Darker on hover */
+}
+
+.image-container p {
+  margin-top: 10px; /* Space between the image and the caption */
+  color: black; /* White text for the caption */
+  font-size: 16px; /* Font size for caption */
+  font-weight: bold; /* Bold the caption text */
+}
+
+
+/* Style for container-02 */
+.container-02 ul {
+  margin: 20px;
+  padding: 0;
+}
+
+.container-02 li {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.container-02-txt {
+  padding: 0;
+  margin: 10px;
+}
+
+
+/* Responsive for small screens */
+@media (max-width: 640px) {
+  html {
+    background: none;
+  }
+
+  body {
+    border: none;
+    padding: 0px;
+  }
+
+  .container-a button {
+    font-size: 16px;
+  }
+  
+  .container2 {
+    display: flex; /* Flexbox to arrange side by side */
+  }
+
+  .container-img {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-content: space-between; 
+  }
+
+  .container-a h2 {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+  
+  .container-a h3 {
+    font-size: 18px;
+    margin: 3px;
+    font-weight: bold;
+  }
+
+
+  /* Ensure .container-02 comes before .container-img in mobile view */
+  .container-02 {
+    order: -1;
+    flex-basis: 100%; /* Make both containers take full width */
+  }
+
+  .container-01 {
+    order: 1;
+    flex-basis: 100%;
+  }
+  
+  .image-item img {
+    max-width: 50px; /* Reduce image size on small screens */
+  }
+  
+  nav ul li {
+    font-size: 16px; /* Set font size */
+  }
+}
+
+
+
+
