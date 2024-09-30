@@ -53,7 +53,7 @@ body {
 /* Style for the tools section */
 #top-header #tools a {
   font-size: 16px; /* Slightly smaller font size */
-  color: green; /* White color for the link */
+  color: black; /* White color for the link */
   text-decoration: none; /* Remove underline */
 }
 
@@ -71,6 +71,7 @@ nav ul {
   list-style-type: none; /* Remove bullet points */
   display: flex; /* Aligns the list items horizontally */
   justify-content: space-around; /* Centers the list items */
+  padding: 0px;
 }
 
 /* Style for the individual list items */
