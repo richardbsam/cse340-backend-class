@@ -29,7 +29,7 @@ body {
   
 /* Style for the header */
 #top-header {
-  background-color: #bdc92050; /* Dark background for the header */
+  background-color: #126432; /* Dark background for the header */
   color: black; /* White text color */
   padding: 20px; /* Space around the content inside the header */
   display: flex; /* Flexbox for layout */
@@ -41,7 +41,7 @@ body {
 #top-header .siteName a {
   font-size: 28px; /* Larger font size for the site name */
   text-decoration: none; /* Remove underline */
-  color: green; /* White color for the link */
+  color: white; /* White color for the link */
   font-weight: bold;
 }
 
@@ -53,7 +53,7 @@ body {
 /* Style for the tools section */
 #top-header #tools a {
   font-size: 16px; /* Slightly smaller font size */
-  color: black; /* White color for the link */
+  color: white; /* White color for the link */
   text-decoration: none; /* Remove underline */
 }
 
@@ -63,7 +63,7 @@ body {
 
 /* Style for the navigation bar */
 nav {
-  background-color: #126432; /* Dark background color */ 
+  background-color: #bdc92050; /* Dark background color */ 
 }
 
 /* Style for the unordered list in the nav */
