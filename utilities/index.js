@@ -79,11 +79,11 @@ Util.buildClassificationGrid = async function(data){
   detailHtml += '<div class="vehicle-info">'
   
   // Vehicle Heading (Make, Model, Year)
-  detailHtml += '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' </h1>'
+  detailHtml += '<h2>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' </h2>'
   
   // Vehicle Price
-  detailHtml += '<h1 class="price"><strong>$' 
-  + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</strong></h1>'
+  detailHtml += '<h2 class="price"><strong>$' 
+  + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</strong></h2>'
 
   // Vehicle Description
   detailHtml += '<p>' + vehicle.inv_description + '</p>'
