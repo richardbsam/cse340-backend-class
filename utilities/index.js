@@ -57,38 +57,37 @@ Util.buildClassificationGrid = async function(data){
     return grid
   }
 
+  
+  /*dgchcs*/
 
-  /* ************************
+ /* ************************
  * Build the vehicle detail HTML
  ************************** */
 Util.buildVehicleDetail = function(vehicle) {
-  let detailHtml = "<div class='vehicle-detail'>"
-  
-  // Vehicle Image
+  let detailHtml = "<div class='vehicle-detail'>";
+
+  // Full-size Vehicle Image
   detailHtml += '<img src="' + vehicle.inv_image + '" alt="Image of ' 
-  + vehicle.inv_make + ' ' + vehicle.inv_model + '" />'
-  
+  + vehicle.inv_make + ' ' + vehicle.inv_model + '" />';
+
   // Vehicle Heading (Make, Model, Year)
-  detailHtml += '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>'
-  
-  // Vehicle Price
-  detailHtml += '<p class="price">$' 
-  + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</p>'
-  
+  detailHtml += '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>';
+
+  // Vehicle Price (Formatted as USD)
+  detailHtml += '<p class="price">$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</p>';
+
   // Vehicle Description
-  detailHtml += '<p class="description">' + vehicle.inv_description + '</p>'
-  
+  detailHtml += '<p class="description">' + vehicle.inv_description + '</p>';
+
   // Vehicle Color
-  detailHtml += '<p class="color"><strong>Color:</strong> ' + vehicle.inv_color + '</p>'
-  
-  // Additional Details if necessary
-  detailHtml += '<p class="mileage"><strong>Mileage:</strong> ' + vehicle.inv_mileage + ' miles</p>'
+  detailHtml += '<p class="color"><strong>Color:</strong> ' + vehicle.inv_color + '</p>';
 
-  detailHtml += "</div>"
-  
-  return detailHtml
+  // Vehicle Mileage (Formatted with commas)
+  detailHtml += '<p class="mileage"><strong>Mileage:</strong> ' + new Intl.NumberFormat('en-US').format(vehicle.inv_mileage) + ' miles</p>';
+
+  detailHtml += "</div>";
+
+  return detailHtml;
 }
-
-
 
 module.exports = Util

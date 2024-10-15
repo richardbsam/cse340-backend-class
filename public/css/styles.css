@@ -301,3 +301,48 @@ nav ul li:hover {
 
 
 
+/*hjsjhc*/
+
+/* styles.css */
+
+.vehicle-detail-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem;
+}
+
+.vehicle-detail-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vehicle-detail img {
+  max-width: 100%;
+  height: auto;
+}
+
+.vehicle-detail h1 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.price, .description, .color, .mileage {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+/* Responsive behavior */
+@media (min-width: 768px) {
+  .vehicle-detail-content {
+    flex-direction: row;
+  }
+
+  .vehicle-detail img {
+    width: 50%;
+    margin-right: 1rem;
+  }
+
+  .vehicle-detail h1, .price, .description, .color, .mileage {
+    width: 50%;
+  }
+}
