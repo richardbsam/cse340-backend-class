@@ -17,8 +17,7 @@ html {
 
 body {
   font-family: 'Arial', 'Helvetica', sans-serif;
-  font-weight: 200; /* normal */
-  font-weight: 600; /* bold */
+
   width: 900px;
   background: white;
   background-size: cover; /* Ensures the image covers the entire area */
@@ -301,48 +300,73 @@ nav ul li:hover {
 
 
 
-/*hjsjhc*/
+/*vehicle details styling*/
 
-/* styles.css */
+/* Container for the vehicle details */
+.vehicle-detail {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
 .vehicle-detail-container {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 1rem;
+  display: flex;  /* Use flexbox to align the image and info side by side */
+  justify-content: space-between;  /* Space out the image and info */
+  align-items: center;  /* Vertically align items in the center */
+  flex-wrap: wrap;  /* Allow wrapping on small screens */
 }
 
-.vehicle-detail-content {
-  display: flex;
-  flex-wrap: wrap;
+/* Vehicle Image Styles */
+.vehicle-image {
+  flex: 1;  /* The image takes up equal space as the vehicle info */
+  padding-right: 20px;
+  max-width: 100%;  /* Ensure the image scales responsively */
 }
 
-.vehicle-detail img {
-  max-width: 100%;
-  height: auto;
+.vehicle-image img {
+  width: 100%;  /* Make sure the image takes up the full width of its container */
+  max-width: 600px;  /* Limit the max width of the image */
+  height: auto;  /* Maintain aspect ratio */
 }
 
-.vehicle-detail h1 {
+/* Vehicle Info Styles */
+.vehicle-info {
+  flex: 2;  /* Give more space to the info */
+  padding-left: 20px;
+}
+
+.vehicle-info h1 {
   font-size: 2rem;
-  margin: 1rem 0;
+  margin: 0;
 }
 
-.price, .description, .color, .mileage {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+.vehicle-info .price {
+  font-size: 2rem;
+  color: #da8300;  /* You can choose your preferred color for price */
 }
 
-/* Responsive behavior */
-@media (min-width: 768px) {
-  .vehicle-detail-content {
-    flex-direction: row;
+.vehicle-info p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.vehicle-info strong {
+  font-weight: bold;  /* Keep bold styling for the titles like Mileage, Description */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .vehicle-detail-container {
+    flex-direction: column;  /* Stack the image and content on small screens */
+    align-items: flex-start;  /* Align items to the left */
   }
 
-  .vehicle-detail img {
-    width: 50%;
-    margin-right: 1rem;
+  .vehicle-image {
+    padding-right: 0;
+    margin-bottom: 20px;  /* Add space between image and content */
   }
 
-  .vehicle-detail h1, .price, .description, .color, .mileage {
-    width: 50%;
+  .vehicle-info {
+    padding-left: 0;
   }
 }

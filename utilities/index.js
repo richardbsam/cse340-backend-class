@@ -63,31 +63,51 @@ Util.buildClassificationGrid = async function(data){
  /* ************************
  * Build the vehicle detail HTML
  ************************** */
-Util.buildVehicleDetail = function(vehicle) {
-  let detailHtml = "<div class='vehicle-detail'>";
-
-  // Full-size Vehicle Image
+ Util.buildVehicleDetail = function(vehicle) {
+  let detailHtml = "<div class='vehicle-detail'>"
+  
+  // Vehicle Container using Flexbox for layout
+  detailHtml += "<div class='vehicle-detail-container'>"
+  
+  // Vehicle Image (on the left, full-size image)
+  detailHtml += '<div class="vehicle-image">'
   detailHtml += '<img src="' + vehicle.inv_image + '" alt="Image of ' 
-  + vehicle.inv_make + ' ' + vehicle.inv_model + '" />';
-
+  + vehicle.inv_make + ' ' + vehicle.inv_model + '" />'
+  detailHtml += '</div>'
+  
+  // Vehicle Details (on the right)
+  detailHtml += '<div class="vehicle-info">'
+  
   // Vehicle Heading (Make, Model, Year)
-  detailHtml += '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>';
-
-  // Vehicle Price (Formatted as USD)
-  detailHtml += '<p class="price">$' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</p>';
+  detailHtml += '<h1>' + vehicle.inv_year + ' ' + vehicle.inv_make + ' ' + vehicle.inv_model + ' </h1>'
+  
+  // Vehicle Price
+  detailHtml += '<h1 class="price"><strong>$' 
+  + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</strong></h1>'
 
   // Vehicle Description
-  detailHtml += '<p class="description">' + vehicle.inv_description + '</p>';
-
+  detailHtml += '<p>' + vehicle.inv_description + '</p>'
+  
   // Vehicle Color
-  detailHtml += '<p class="color"><strong>Color:</strong> ' + vehicle.inv_color + '</p>';
-
-  // Vehicle Mileage (Formatted with commas)
-  detailHtml += '<p class="mileage"><strong>Mileage:</strong> ' + new Intl.NumberFormat('en-US').format(vehicle.inv_mileage) + ' miles</p>';
-
-  detailHtml += "</div>";
-
-  return detailHtml;
+  detailHtml += '<p class="color"><strong>Color:</strong> ' + vehicle.inv_color + '</p>'
+  
+  // Mileage with proper place value commas, bold only the title
+  let mileage = vehicle.inv_miles;  // Correct field for mileage
+  if (isNaN(mileage)) {
+    mileage = 0; // Default to 0 if mileage is not a valid number
+  }
+  detailHtml += '<p class="mileage"><strong>Mileage:</strong> ' 
+  + new Intl.NumberFormat('en-US').format(mileage) + ' miles</p>'
+  
+  detailHtml += '</div>'  // Close vehicle-info div
+  detailHtml += "</div>"  // Close vehicle-detail-container div
+  
+  detailHtml += "</div>"  // Close vehicle-detail div
+  
+  return detailHtml
 }
+
+
+
 
 module.exports = Util
