@@ -24,7 +24,7 @@ app.use(session({
     createTableIfMissing: true,
     pool,
   }),
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'fallback-secret',  // Use fallback if secret not set
   resave: true,
   saveUninitialized: true,
   name: 'sessionId',
@@ -84,8 +84,8 @@ app.use(async (err, req, res, next) => {
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT 
-const host = process.env.HOST 
+const port = process.env.PORT || 5500;  // Default to port 5500 if not set
+const host = process.env.HOST || 'localhost';  // Default to 'localhost'
 
 /* ***********************
  * Log statement to confirm server operation
