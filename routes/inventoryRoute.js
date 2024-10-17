@@ -10,5 +10,8 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to display the inventory item detail view based on the inventory ID
 router.get("/detail/:invId", utilities.handleErrors(invController.buildVehicleDetail))
 
+// Intentional error route for testing 500 error
+router.get("/trigger-error", utilities.handleErrors(invController.triggerError));
+
 
 module.exports = router;
