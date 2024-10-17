@@ -20,14 +20,13 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 
-
-
 /* ***************************
  *  Build vehicle detail view
  * ************************** */
+
+//W03: Task02//
 invCont.buildVehicleDetail = async function (req, res, next) {
   const invId = req.params.invId;
-
   try {
     const vehicle = await invModel.getVehicleById(invId);
     if (vehicle) {
@@ -45,13 +44,9 @@ invCont.buildVehicleDetail = async function (req, res, next) {
     console.error("Error fetching vehicle details: ", error);
     res.status(500).send("Server Error");
   }
-};
-
-
+}; 
+//Task02 Ends
 
 module.exports = invCont
 
-
-
-/*hcgsgh*/
 

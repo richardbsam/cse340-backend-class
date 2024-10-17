@@ -30,15 +30,12 @@ app.use(session({
   name: 'sessionId',
 }))
 
-
-
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
-
 
 /* ***********************
  * View Engine and Templates
@@ -47,6 +44,7 @@ app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
 
+
 /* ***********************
  * Routes
  *************************/
@@ -54,6 +52,17 @@ app.use(static)
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
+
+//W03: Task02//
+// Apply routes and wrap async operations with try/catch
+app.get("/", async (req, res, next) => {
+  try {
+    await baseController.buildHome(req, res);
+  } catch (err) {
+    next(err);
+  }
+});       
+//Task02 Ends//
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
@@ -64,20 +73,33 @@ app.use(async (req, res, next) => {
 })
 
 
+
+
+
+
 /* ***********************
 * Express Error Handler
 * Place after all other middleware
 *************************/
+//W03: Task 03//
 app.use(async (err, req, res, next) => {
-  let nav = await utilities.getNav()
-  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  let nav = await utilities.getNav();
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`);
+  
+  let message = 'Oh no! There was a crash. Maybe try a different route?';
+  if (err.status === 404) {
+    message = err.message;
+  } else if (err.status >= 500) {
+    message = 'Server Error. Please try again later.';
+  }
+  
+  res.status(err.status || 500);
   res.render("errors/error", {
     title: err.status || 'Server Error',
     message,
     nav
-  })
-})
+  });
+});
 
   
 /* ***********************
