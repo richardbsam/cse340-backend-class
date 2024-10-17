@@ -457,6 +457,11 @@ nav ul li:hover {
   color: black;  /* You can choose your preferred color for price */
 }
 
+.vehicle-info h2.price {
+  margin-top: 10px;
+}
+
+
 .vehicle-info p {
   font-size: 1rem;
   line-height: 1.5;
@@ -467,19 +472,26 @@ nav ul li:hover {
 }
 
 /* Media Query for Small Screens */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .vehicle-detail-container {
     flex-direction: column;  /* Stack the image and info vertically on small screens */
     text-align: center;  /* Center the text and image */
   }
 
   .vehicle-image {
+    width: 100%; /* Make sure the image takes full width */
     padding-right: 0;
     padding-bottom: 20px;  /* Add some space between the image and the info */
   }
 
   .vehicle-info {
     padding-left: 0;
+    width: 100%; /* Make the vehicle info take full width */
+    text-align: center; /* Center the text for better readability on mobile */
+  }
+
+  .vehicle-info h2.price {
+    margin-top: 10px;
   }
 }
 
