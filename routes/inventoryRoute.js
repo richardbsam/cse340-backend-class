@@ -10,8 +10,11 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to display the inventory item detail view based on the inventory ID
 router.get("/detail/:invId", utilities.handleErrors(invController.buildVehicleDetail))
 
-// Intentional error route for testing 500 error
-router.get("/trigger-error", utilities.handleErrors(invController.triggerError));
+// Intentional Error Route for Task 3
+router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
+    throw new Error('Intentional server error triggered for testing!');
+  }));
+
 
 
 module.exports = router;
