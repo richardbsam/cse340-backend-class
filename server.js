@@ -15,6 +15,8 @@ const utilities = require("./utilities/")
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute");
+const accountRoute = require("./routes/accountRoute");
+
 
 /* ***********************
  * Middleware
@@ -53,7 +55,6 @@ app.use(static)
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
-//W03: Task02//
 // Apply routes and wrap async operations with try/catch
 app.get("/", async (req, res, next) => {
   try {
@@ -62,7 +63,7 @@ app.get("/", async (req, res, next) => {
     next(err);
   }
 });       
-//Task02 Ends//
+
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
@@ -72,6 +73,9 @@ app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
 
+// Account Route
+app.use("/account", accountRoute);
+
 
 
 /* ***********************
@@ -79,11 +83,6 @@ app.use(async (req, res, next) => {
 * Place after all other middleware
 *************************/
 //W03: Task 03//
-
-/* ***********************
-* Express Error Handler
-* Place after all other middleware
-*************************/
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav(); // Assuming you have this for navigation
   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
