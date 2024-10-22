@@ -64,18 +64,16 @@ app.get("/", async (req, res, next) => {
   }
 });       
 
-
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({status: 404, message: "Sorry, we appear to have lost that page."})
 })
 
 // Account Route
 app.use("/account", accountRoute);
-
 
 
 /* ***********************
@@ -92,12 +90,12 @@ app.use(async (err, req, res, next) => {
   if (err.status == 404) {
     message = err.message;  // Display the 404 message
   } else {
-    message = 'Oh no! There was a crash. Maybe try a different route?';  // Default for 500 errors
+    message = "Oh no! There was a crash. Maybe try a different route?";  // Default for 500 errors
   }
 
   res.status(err.status || 500);  // Set the correct status code
   res.render("errors/error", {
-    title: err.status || 'Server Error',
+    title: err.status || "Server Error",
     message,
     nav
   });
