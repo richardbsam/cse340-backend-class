@@ -15,6 +15,4 @@ router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
     throw new Error('Intentional server error triggered for testing!');
   }));
 
-
-
 module.exports = router;

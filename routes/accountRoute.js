@@ -5,7 +5,11 @@ const utilities = require("../utilities"); // Assuming utilities/index.js is the
 const accountController = require("../controllers/accountController"); // Controller to handle account actions
 
 // Define a GET route for the login page
-router.get("/login", utilities.handleErrors(accountController.buildLogin));
+// Route to build login view
+router.get("/login", utilities.handleErrors(accountController.buildLogin))
+
+// Route to build registration view
+router.get("/register", utilities.handleErrors(accountController.buildLogin))
 
 
 // Error handling middleware for any issues in account-related routes
