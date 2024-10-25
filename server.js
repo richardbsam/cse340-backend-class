@@ -6,7 +6,7 @@
  * Require Statements
  *************************/
 const session = require("express-session")
-const pool = require('./database/')
+const pool = require("./database/")
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts") 
 const env = require("dotenv").config()
@@ -15,8 +15,9 @@ const utilities = require("./utilities/")
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute");
-const accountRoute = require("./routes/accountRoute");
+const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
+const flash = require("connect-flash");
 
 
 /* ***********************
@@ -67,6 +68,8 @@ app.use("/inv", inventoryRoute)
 
 // Account routes
 app.use("/account", accountRoute)
+
+
 
 // Apply routes and wrap async operations with try/catch
 app.get("/", async (req, res, next) => {

@@ -1,8 +1,13 @@
+    
+<!-- views/inventory/management.ejs -->
+
     <h1><%= title %></h1>
  
-
-    <!-- Flash Message Placeholder -->
-
+ 
+ <!-- Display flash message -->
+ <% if (message) { %>
+    <p class="flash-message"><%= message %></p>
+  <% } %>
 
     <!-- Links to Add Classification and Inventory -->
     <ul>

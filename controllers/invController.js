@@ -41,15 +41,14 @@ invCont.buildVehicleDetail = async function (req, res, next) {
  *  Render the management view
  * ************************** */
 invCont.buildManagementView = async function (req, res, next) {
-  let nav = await utilities.getNav(); // Retrieve the navigation
-  const message = req.flash('message') || null; // Retrieve any flash message
+  let nav = await utilities.getNav(); 
+  const message = req.flash('message') || null;
   res.render("./inventory/management", {
     title: "Inventory Management",
     nav,
     message,
   });
 };
-
 
 module.exports = invCont;
 

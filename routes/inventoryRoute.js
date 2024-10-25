@@ -13,6 +13,19 @@ router.get("/detail/:invId", utilities.handleErrors(invController.buildVehicleDe
 // Route to render the inventory management view
 router.get("/management", utilities.handleErrors(invController.buildManagementView))
 
+
+
+
+
+// Route to add a new classification (Task 2)
+router.get("/classification/add", utilities.handleErrors(invController.addClassificationView));
+
+// Route to add a new inventory item (Task 3)
+router.get("/inventory/add", utilities.handleErrors(invController.addInventoryView));
+
+
+
+
 // Intentional Error Route for Task 3
 router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
     throw new Error('Intentional server error triggered for testing!');
