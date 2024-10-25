@@ -1,6 +1,5 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-
 const invCont = {}
 
 /* ***************************
@@ -19,15 +18,12 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
-
 /* ***************************
  *  Build vehicle detail view
  * ************************** */
-//W03: Task01//
 invCont.buildVehicleDetail = async function (req, res, next) {
   const invId = req.params.invId;
   const vehicle = await invModel.getVehicleById(invId);
-  
   if (vehicle) {
     let nav = await utilities.getNav();
     const vehicleDetail = utilities.buildVehicleDetail(vehicle);
@@ -40,8 +36,19 @@ invCont.buildVehicleDetail = async function (req, res, next) {
     res.render("404", { title: "404 - Vehicle Not Found", nav: await utilities.getNav() });
   }
 };
-//Task02 Ends
 
+/* ***************************
+ *  Render the management view
+ * ************************** */
+invCont.buildManagementView = async function (req, res, next) {
+  let nav = await utilities.getNav(); // Retrieve the navigation
+  const message = req.flash('message') || null; // Retrieve any flash message
+  res.render("./inventory/management", {
+    title: "Inventory Management",
+    nav,
+    message,
+  });
+};
 
 
 module.exports = invCont;
