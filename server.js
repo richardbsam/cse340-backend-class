@@ -19,7 +19,6 @@ const accountRoute = require("./routes/accountRoute");
 const bodyParser = require("body-parser")
 
 
-
 /* ***********************
  * Middleware
  * ************************/
@@ -46,6 +45,7 @@ app.use(function(req, res, next){
   next()
 })
 
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -61,6 +61,12 @@ app.use(static)
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
+ 
+// Inventory routes
+app.use("/inv", inventoryRoute)
+
+// Account routes
+app.use("/account", accountRoute)
 
 // Apply routes and wrap async operations with try/catch
 app.get("/", async (req, res, next) => {
@@ -69,18 +75,14 @@ app.get("/", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});       
+});  
 
-// Inventory routes
-app.use("/inv", inventoryRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: "Sorry, we appear to have lost that page."})
 })
 
-// Account routes
-app.use("/account", accountRoute)
 
 
 /* ***********************

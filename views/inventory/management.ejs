@@ -1,18 +1,12 @@
-<%- include('../layouts/layout') %>
+    <h1><%= title %></h1>
+ 
 
-<% layout('layouts/layout') -%>
-
-<% block('body') { %>
-    <h1>Inventory Management</h1>
-    
     <!-- Flash Message Placeholder -->
-    <% if (typeof message !== 'undefined') { %>
-        <p class="flash-message"><%= message %></p>
-    <% } %>
+
 
     <!-- Links to Add Classification and Inventory -->
     <ul>
         <li><a href="/inv/add-classification">Add New Classification</a></li>
         <li><a href="/inv/add-inventory">Add New Inventory</a></li>
     </ul>
-<% } %>
+

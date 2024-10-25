@@ -200,7 +200,7 @@ nav ul li:hover {
 }
 
 .container-a button {
-  background-color: #313131; /* Button background color */
+  background-color: #333; /* Button background color */
   color: white; /* Button text color */
   font-weight: bold;
   padding: 10px 15px;
@@ -401,7 +401,7 @@ nav ul li:hover {
 
 
 
-/*guwugwdcwgwdcg*/
+
 
 /* Vehicle Details Styling */
 
@@ -495,3 +495,193 @@ nav ul li:hover {
   }
 }
 
+
+
+
+
+
+
+/* Login Base Styles */
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.flash-message {
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+input[type="email"], 
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus, 
+input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #9fa81c;
+}
+
+/* Links */
+
+/* Responsive adjustments */
+@media (max-width: 680px) {
+  .login-container {
+    max-width: 90%;
+  }
+}
+
+
+
+
+/* Container for form elements */
+.register-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.flash-message {
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Toggle password visibility */
+button[type="button"] {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+button[type="button"]:hover {
+  background-color: #9fa81c;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button[type="submit"]:hover {
+  background-color: #9fa81c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 680px) {
+  .register-container {
+    max-width: 90%;
+  }
+}
