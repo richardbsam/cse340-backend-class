@@ -26,5 +26,14 @@ router.use((err, req, res, next) => {
   res.status(500).send("Something went wrong. Please try again later.");
 });
 
+// Process the login attempt
+router.post(
+  "/login",
+  (req, res) => {
+    res.status(200).send('login process')
+  }
+)
+
+
 // Export the router for use in server.js
 module.exports = router;
