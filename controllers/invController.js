@@ -96,9 +96,6 @@ invCont.addNewClassification = async function (req, res, next) {
 };
 
 
-
-
-
 /* ***************************
  *  Render the Add Inventory View
  * ************************** */
@@ -106,16 +103,27 @@ invCont.buildAddInventoryView = async function (req, res, next) {
   let nav = await utilities.getNav(); 
   let classificationList = await utilities.buildClassificationList();
   const message = req.flash('message') || null;
+  
+  // Ensure default values are passed for form fields to avoid "undefined" errors
   res.render("./inventory/add-inventory", {
     title: "Add New Vehicle",
     nav,
     classificationList,
-    message,
+    inv_make: '',   // Default empty value
+    inv_model: '',  // Default empty value
+    inv_description: '',  // Default empty value
+    inv_image: '/images/no-image.png',  // Default image
+    inv_thumbnail: '/images/no-image-thumb.png',  // Default thumbnail
+    inv_price: '',  // Default empty value
+    inv_miles: '',  // Default empty value
+    inv_color: '',  // Default empty value
+    message
   });
 };
 
+
 /* ***************************
- *  Process the new vehicle
+ *  Process the new vehicle form
  * ************************** */
 invCont.addNewVehicle = async function (req, res, next) {
   const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color } = req.body;
@@ -125,8 +133,15 @@ invCont.addNewVehicle = async function (req, res, next) {
     req.flash('message', 'Please fill out all fields correctly.');
     return res.render("./inventory/add-inventory", {
       title: "Add New Vehicle",
-      classificationList: await utilities.buildClassificationList(classification_id),
-      inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color,
+      classificationList: await utilities.buildClassificationList(classification_id),  // Pass the selected classification
+      inv_make, 
+      inv_model, 
+      inv_description, 
+      inv_image: inv_image || '/images/no-image.png',  // Fallback to default image if not provided
+      inv_thumbnail: inv_thumbnail || '/images/no-image-thumb.png',  // Fallback to default thumbnail
+      inv_price, 
+      inv_miles, 
+      inv_color,
       message: req.flash('message')
     });
   }
@@ -158,7 +173,6 @@ invCont.addNewVehicle = async function (req, res, next) {
     res.redirect('/inv/add-inventory');
   }
 };
-
 
 
 

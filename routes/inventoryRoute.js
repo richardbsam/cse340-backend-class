@@ -22,21 +22,17 @@ router.post("/add-classification", utilities.handleErrors(invController.addNewCl
 
 
 // Route to add a new inventory item (Task 3)
-router.get("/add-inventory", utilities.handleErrors(invController.addInventoryView));
-
-
-// Intentional Error Route for Task 3
-router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
-    throw new Error('Intentional server error triggered for testing!');
-  }));
-
-
-
 // Route to render the Add Inventory view
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventoryView));
 
 // Route to handle form submission and add a new vehicle
 router.post("/add-inventory", utilities.handleErrors(invController.addNewVehicle));
+
+// Intentional Error Route for Task 3
+router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
+  throw new Error('Intentional server error triggered for testing!');
+}));
+
 
 
 module.exports = router;
