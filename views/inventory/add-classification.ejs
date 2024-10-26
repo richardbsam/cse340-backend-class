@@ -5,9 +5,10 @@
       <%= message %>
     </div>
   <% } %>
-  
+
+
   <script>
-    // Client-side validation for classification name
+    /* Client-side validation for classification name */
     function validateForm() {
       const classificationName = document.getElementById("classificationName").value;
       const regex = /^[a-zA-Z0-9]+$/;
@@ -26,5 +27,6 @@
     <label for="classification_name">Classification Name:</label>
     <input type="text" id="classification_name" name="classification_name" required pattern="^[A-Za-z0-9]+$" title="No spaces or special characters allowed.">
     <button type="submit">Add Classification</button>
-  </form>
-  
+</form>
+
+
