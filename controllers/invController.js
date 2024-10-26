@@ -112,8 +112,8 @@ invCont.buildAddInventoryView = async function (req, res, next) {
     inv_make: '',   // Default empty value
     inv_model: '',  // Default empty value
     inv_description: '',  // Default empty value
-    inv_image: '/images/no-image.png',  // Default image
-    inv_thumbnail: '/images/no-image-thumb.png',  // Default thumbnail
+    inv_image: '/images/vehicles/no-image.png',  // Default image
+    inv_thumbnail: '/images/vehicles/no-image-tn.png',  // Default thumbnail
     inv_price: '',  // Default empty value
     inv_miles: '',  // Default empty value
     inv_color: '',  // Default empty value
@@ -137,8 +137,8 @@ invCont.addNewVehicle = async function (req, res, next) {
       inv_make, 
       inv_model, 
       inv_description, 
-      inv_image: inv_image || '/images/no-image.png',  // Fallback to default image if not provided
-      inv_thumbnail: inv_thumbnail || '/images/no-image-thumb.png',  // Fallback to default thumbnail
+      inv_image: inv_image || '/images/vehicles/no-image.png',  // Fallback to default image if not provided
+      inv_thumbnail: inv_thumbnail || '/images/vehicles/no-image-tn.png',  // Fallback to default thumbnail
       inv_price, 
       inv_miles, 
       inv_color,
