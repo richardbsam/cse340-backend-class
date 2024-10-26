@@ -1,10 +1,26 @@
 
+<h1><%= title %></h1>
 <% if (typeof message !== 'undefined') { %>
     <div class="flash-message">
       <%= message %>
     </div>
   <% } %>
+  
+  <script>
+    // Client-side validation for classification name
+    function validateForm() {
+      const classificationName = document.getElementById("classificationName").value;
+      const regex = /^[a-zA-Z0-9]+$/;
+      const errorMsg = document.getElementById("error-message");
 
+      if (!regex.test(classificationName)) {
+        errorMsg.textContent = "Classification name cannot contain spaces or special characters.";
+        return false;
+      }
+      errorMsg.textContent = "";
+      return true;
+    }
+  </script>
 
 <form action="/inv/add-classification" method="POST">
     <label for="classification_name">Classification Name:</label>
