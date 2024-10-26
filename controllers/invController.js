@@ -96,5 +96,71 @@ invCont.addNewClassification = async function (req, res, next) {
 };
 
 
+
+
+
+/* ***************************
+ *  Render the Add Inventory View
+ * ************************** */
+invCont.buildAddInventoryView = async function (req, res, next) {
+  let nav = await utilities.getNav(); 
+  let classificationList = await utilities.buildClassificationList();
+  const message = req.flash('message') || null;
+  res.render("./inventory/add-inventory", {
+    title: "Add New Vehicle",
+    nav,
+    classificationList,
+    message,
+  });
+};
+
+/* ***************************
+ *  Process the new vehicle
+ * ************************** */
+invCont.addNewVehicle = async function (req, res, next) {
+  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color } = req.body;
+
+  // Server-side validation
+  if (!classification_id || !inv_make || !inv_model || !inv_description || inv_price <= 0 || inv_miles < 0 || !inv_color) {
+    req.flash('message', 'Please fill out all fields correctly.');
+    return res.render("./inventory/add-inventory", {
+      title: "Add New Vehicle",
+      classificationList: await utilities.buildClassificationList(classification_id),
+      inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color,
+      message: req.flash('message')
+    });
+  }
+
+  try {
+    const insertResult = await invModel.insertVehicle({
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color
+    });
+
+    if (insertResult) {
+      req.flash('message', 'Vehicle added successfully!');
+      await utilities.refreshNav();
+      res.redirect('/inv/management');
+    } else {
+      req.flash('message', 'Failed to add the vehicle.');
+      res.redirect('/inv/add-inventory');
+    }
+  } catch (error) {
+    console.error('Error adding vehicle:', error);
+    req.flash('message', 'There was an issue adding the vehicle. Please try again.');
+    res.redirect('/inv/add-inventory');
+  }
+};
+
+
+
+
 module.exports = invCont;
 

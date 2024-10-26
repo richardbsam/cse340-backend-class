@@ -31,4 +31,12 @@ router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
   }));
 
 
+
+// Route to render the Add Inventory view
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventoryView));
+
+// Route to handle form submission and add a new vehicle
+router.post("/add-inventory", utilities.handleErrors(invController.addNewVehicle));
+
+
 module.exports = router;

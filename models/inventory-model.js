@@ -56,7 +56,7 @@ async function insertClassification(classification_name) {
 }
 
 
-/*ljdfoajodbnogokmfk*/
+/* Dynamic Navigation Update */
 async function getNav() {
   try {
     const sql = "SELECT classification_name FROM classification";
@@ -80,6 +80,34 @@ async function refreshNav() {
 
 
 
+/* ***************************
+ *  Insert new vehicle into the database
+ * ************************** */
+async function insertVehicle(vehicleData) {
+  const {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+  } = vehicleData;
 
-module.exports = { getVehicleById, getClassifications, getInventoryByClassificationId, insertClassification, getNav, refreshNav };
+  try {
+    const sql = `
+      INSERT INTO inventory (classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING inv_id`;
+    const result = await pool.query(sql, [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color]);
+    return result.rows[0].inv_id;
+  } catch (error) {
+    console.error('Error inserting vehicle:', error);
+    return null;
+  }
+}
+
+
+module.exports = { getVehicleById, getClassifications, getInventoryByClassificationId, insertClassification, getNav, refreshNav, insertVehicle };
 
