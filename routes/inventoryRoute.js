@@ -18,10 +18,12 @@ router.get("/management", utilities.handleErrors(invController.buildManagementVi
 
 
 // Route to add a new classification (Task 2)
-router.get("/classification/add", utilities.handleErrors(invController.addClassificationView));
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView));
+router.post("/add-classification", utilities.handleErrors(invController.addNewClassification));
 
 // Route to add a new inventory item (Task 3)
-router.get("/inventory/add", utilities.handleErrors(invController.addInventoryView));
+router.get("/add-inventory", utilities.handleErrors(invController.addInventoryView));
+
 
 
 

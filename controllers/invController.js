@@ -32,6 +32,7 @@ invCont.buildVehicleDetail = async function (req, res, next) {
       nav,
       vehicleDetail,
     });
+    
   } else {
     res.render("404", { title: "404 - Vehicle Not Found", nav: await utilities.getNav() });
   }
@@ -49,6 +50,52 @@ invCont.buildManagementView = async function (req, res, next) {
     message,
   });
 };
+
+
+/* ***************************
+ *  Render the Add Classification View
+ * ************************** */
+invCont.buildAddClassificationView = async function (req, res, next) {
+  let nav = await utilities.getNav(); 
+  const message = req.flash('message') || null; // get flash message, if any
+  res.render("./inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    message, // flash message for success or failure
+  });
+};
+
+/* ***************************
+ *  Process the new classification
+ * ************************** */
+invCont.addNewClassification = async function (req, res, next) {
+  // Extract classification name from the form submission
+  const { classification_name } = req.body;
+
+  // Server-side validation for empty input or invalid characters
+  if (!classification_name || !/^[A-Za-z0-9]+$/.test(classification_name)) {
+    req.flash('message', 'Invalid classification name. No spaces or special characters allowed.');
+    return res.redirect('/inv/add-classification'); // return to the form with an error message
+  }
+
+  try {
+    // Insert the new classification into the database
+    const insertResult = await invModel.insertClassification(classification_name);
+    if (insertResult) {
+      req.flash('message', 'Classification added successfully!');
+    } else {
+      req.flash('message', 'Failed to add classification.');
+    }
+    res.redirect('/inv'); // redirect to the management view on success
+  } catch (error) {
+    // Log error and flash message if insertion fails
+    console.error('Error adding classification:', error);
+    req.flash('message', 'There was an issue adding the classification. Please try again.');
+    res.redirect('/inv/add-classification'); // return to form on failure
+  }
+};
+
+
 
 module.exports = invCont;
 

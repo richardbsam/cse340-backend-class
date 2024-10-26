@@ -1,13 +1,15 @@
-    
 <!-- views/inventory/management.ejs -->
 
     <h1><%= title %></h1>
  
+    <% if (typeof message !== 'undefined') { %>
+      <div class="flash-message">
+        <%= message %>
+      </div>
+    <% } %>
+    
  
  <!-- Display flash message -->
- <% if (message) { %>
-    <p class="flash-message"><%= message %></p>
-  <% } %>
 
     <!-- Links to Add Classification and Inventory -->
     <ul>
