@@ -1,0 +1,23 @@
+<div class="login-container">
+    <h1><%= title %></h1>
+      
+    <!-- Flash message if available -->
+    <% if (typeof flashMessage !== 'undefined' && flashMessage) { %>
+      <div class="flash-message">
+        <%= flashMessage %>
+      </div>
+    <% } %>
+
+    <!-- Display errors if any -->
+    <% if (errors) { %>
+      <div class="error-messages">
+        <%= errors %>
+      </div>
+    <% } %>
+
+    <p>You're logged in!</p>
+</div>
+
+ <!-- Link to CSS file -->
+ <link rel="stylesheet" href="/css/management.css">
+

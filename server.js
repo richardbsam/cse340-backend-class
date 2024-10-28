@@ -17,7 +17,8 @@ const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
-const flash = require("connect-flash");
+const flash = require("connect-flash")
+const cookieParser = require("cookie-parser");
 
 
 /* ***********************
@@ -34,9 +35,10 @@ app.use(session({
   name: 'sessionId',
 }))
 
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser())
 
 
 // Express Messages Middleware
