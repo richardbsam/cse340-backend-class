@@ -35,18 +35,25 @@ app.use(session({
   name: 'sessionId',
 }))
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
-app.use(cookieParser())
-
-
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+app.use(bodyParser.json())
+
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
+
+
+
+
+
 
 
 /* ***********************
@@ -71,8 +78,6 @@ app.use("/inv", inventoryRoute)
 // Account routes
 app.use("/account", accountRoute)
 
-
-
 // Apply routes and wrap async operations with try/catch
 app.get("/", async (req, res, next) => {
   try {
@@ -82,12 +87,10 @@ app.get("/", async (req, res, next) => {
   }
 });  
 
-
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: "Sorry, we appear to have lost that page."})
 })
-
 
 
 /* ***********************
