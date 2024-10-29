@@ -1,16 +1,31 @@
 <!-- views/inventory/management.ejs -->
-    <h1><%= title %></h1>
+<h1><%= title %></h1>
 
 <!-- Display flash message -->
-    <% if (typeof message !== 'undefined') { %>
-      <div class="flash-message">
-        <%= message %>
-      </div>
-    <% } %>
-    
-<!-- Links to Add Classification and Inventory -->
-    <ul>
-        <li><a href="/inv/add-classification">Add New Classification</a></li>
-        <li><a href="/inv/add-inventory">Add New Inventory</a></li>
-    </ul>
+<% if (typeof message !== 'undefined') { %>
+  <div class="flash-message">
+    <%= message %>
+  </div>
+<% } %>
 
+<!-- Links to Add Classification and Inventory -->
+<ul>
+    <li><a href="/inv/add-classification">Add New Classification</a></li>
+    <li><a href="/inv/add-inventory">Add New Inventory</a></li>
+</ul>
+
+<!-- Heading for managing inventory -->
+<h2>Manage Inventory</h2>
+
+<!-- Paragraph explaining inventory management -->
+<p>Select a classification from the list to see the items belonging to that classification.</p>
+<%- classificationSelect %>
+
+<!-- Empty table to be populated by JavaScript -->
+<table id="inventoryDisplay"></table>
+
+<!-- Message for users with JavaScript disabled -->
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+
+<script src="../../js/inventory.js"></script>
