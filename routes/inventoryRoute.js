@@ -13,13 +13,26 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:invId", utilities.handleErrors(invController.buildVehicleDetail))
 
 // Route to render the inventory management view
-router.get("/management", utilities.handleErrors(invController.buildManagementView))
+router.get("/", utilities.handleErrors(invController.buildManagementView))
 
 // Route to add a new classification (Task 2)
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView));
 
-router.post("/add-classification", utilities.handleErrors(invController.addNewClassification));
 
+
+
+// Route to process the add-classification form with validation
+router.post(
+  "/add-classification",
+  [
+    body('classification_name')
+      .matches(/^[a-zA-Z0-9]+$/)
+      .withMessage('Classification name cannot contain spaces or special characters.')
+      .trim() // Removes extra whitespace from input
+      .escape() // Escape special characters like <, >, &, etc.
+  ],
+  utilities.handleErrors(invController.processAddClassification)
+);
 
 // Route to add a new inventory item (Task 3)
 // Route to render the Add Inventory view
