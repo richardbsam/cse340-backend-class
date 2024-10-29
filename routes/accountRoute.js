@@ -36,7 +36,8 @@ router.post(
 );
 
 // Route for account management view after login
-router.get("/", utilities.handleErrors(accountController.buildAccountManagement));
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
+
 
 
 // Export the router for use in server.js
