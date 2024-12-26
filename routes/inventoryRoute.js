@@ -42,6 +42,9 @@ router.post("/add-inventory", utilities.handleErrors(invController.addNewVehicle
 // Route to process the route and return the data as JSON
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
+// Route to handle edit view for a specific inventory item by inventory_id
+router.get('/edit/:inventory_id', utilities.handleErrors(invController.editInventoryView));
+
 // Intentional Error Route for Task 3
 router.get("/trigger-error", utilities.handleErrors(async (req, res, next) => {
   throw new Error('Intentional server error triggered for testing!');

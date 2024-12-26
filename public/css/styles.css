@@ -690,3 +690,59 @@ button[type="submit"]:hover {
     max-width: 90%;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Inventory management paragraph styling */
+p {
+    text-align: center;
+    margin: 20px 0;
+    color: #666;
+}
+
+/* Dropdown styling */
+select {
+    width: 200px;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Table styling */
+#inventoryDisplay {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+#inventoryDisplay th, #inventoryDisplay td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+#inventoryDisplay th {
+    background-color: green; /* Green header */
+    color: white;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra stripes */
+}
+
+/* No script message styling */
+noscript {
+    color: #b00;
+    text-align: center;
+    margin-top: 20px;
+}
